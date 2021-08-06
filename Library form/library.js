@@ -1,4 +1,3 @@
-
 function checkFName() {
     var fname = document.getElementById("fname").value;
     console.log(fname);
@@ -40,75 +39,83 @@ function checkContact() {
 }
 
 function checkUType() {
-    var type = document.getElementById("type").value;
-    if (type == null || type == "") {
+    var typ = null;
+    var tp = document.getElementsByName('type');
+
+    for (i = 0; i < tp.length; i++) {
+        if (tp[i].checked)
+            var typ = tp[i];
+    }
+    if (typ == null) {
         return true;
     }
     return false;
 }
+/*
 
 function checkPayment() {
-    var ptype = document.getElementById("ptype").value;
-    if (ptype == null || ptype == "") {
+    //var ptype = document.getElementById("ptype").selectedOptions[0].value;
+    var ptype = document.getElementById('ptype').selectedOptions[0].value;
+    if (ptype == null || ptype == "Select a payment type" || ptype == "") {
         return true;
     }
     return false;
 }
 
-
+*/
 
 
 //===========================================================================================
 
 function formValidation() {
 
-    //var bool = true;
+
 
     if (checkFName()) {
         var output = "*Required";
         document.getElementById("fn").innerHTML = output;
-        // bool = false;
+
     }
 
     if (checkLName()) {
         var output = "*Required";
         document.getElementById("ln").innerHTML = output;
-        //bool = false;
+
     }
 
     if (checkEmail()) {
         var output = "*Required";
         document.getElementById("em").innerHTML = output;
-        //bool = false;
+
     }
 
     if (checkAddress()) {
         var output = "*Required";
         document.getElementById("ad").innerHTML = output;
-        // bool = false;
+
     }
 
     if (checkContact()) {
         var output = "*Required";
         document.getElementById("cn").innerHTML = output;
-        //bool = false;
+
     }
 
     if (checkUType()) {
         var output = "*Required";
         document.getElementById("ut").innerHTML = output;
-        // bool = false;
-    }
 
-    if (checkPayment()) {
-        var output = "*Required";
-        document.getElementById("pt").innerHTML = output;
-        //bool = false;
     }
+    /*
+        if (checkPayment()) {
+            var output = "*Required";
+            document.getElementById("pt").innerHTML = output;
+    
+        }*/
 
     else {
-        alert('User added successfully!')
+        window.alert('User added successfully!');
     }
 
-    // return bool;
+
 }
